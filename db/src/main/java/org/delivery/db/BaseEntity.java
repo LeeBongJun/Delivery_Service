@@ -4,14 +4,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Generated;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 @MappedSuperclass
 @Data
 @SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseEntity {
 
     @Id
