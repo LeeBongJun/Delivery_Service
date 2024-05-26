@@ -1,6 +1,5 @@
 package org.delivery.db.user;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -39,7 +38,5 @@ public class UserEntity extends BaseEntity {
     private LocalDateTime unregisteredAt;
 
     private LocalDateTime lastLoginAt;
-
-
 
 }
