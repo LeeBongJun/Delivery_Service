@@ -27,27 +27,47 @@ public class StoreEntity extends BaseEntity {
     @Column(length = 150, nullable = false)
     private String address;
 
-    @Column(length = 50 , nullable = false)
+    @Column(length = 50, nullable = false)
     @Enumerated(EnumType.STRING)
     private StoreStatus status;
 
-    @Column(length = 50 , nullable = false)
+    @Column(length = 50, nullable = false)
     @Enumerated(EnumType.STRING)
     private StoreCategory category;
 
-
     private double star;
 
-    @Column(length = 200 , nullable = false)
+    @Column(length = 200, nullable = false)
     private String thumbnailUrl;
 
-    @Column(precision = 11, scale = 4 , nullable = false)
+    @Column(precision = 11, scale = 4, nullable = false)
     private BigDecimal minimumAmount;
 
-    @Column(precision = 11, scale = 4 , nullable = false)
+    @Column(precision = 11, scale = 4, nullable = false)
     private BigDecimal minimumDeliveryAmount;
 
     @Column(length = 20)
     private String phoneNumber;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
