@@ -38,4 +38,6 @@ public class TokenService {
         Objects.requireNonNull(userId, () -> {throw new ApiException(ErrorCode.NULL_POINT);});
         return Long.parseLong(userId.toString());
     }
+
+
 }
