@@ -11,6 +11,7 @@ import org.delivery.db.userorder.enums.UserOrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -31,12 +32,14 @@ public class UserOrderEntity extends BaseEntity {
     @Column(precision = 11 , scale = 4 , nullable = false)
     private BigDecimal amount;
 
-    private LocalDate acceptedAt;
+    private LocalDateTime orderedAt;
 
-    private LocalDate cookingStartedAt;
+    private LocalDateTime acceptedAt;
 
-    private LocalDate deliveryStartedAt;
+    private LocalDateTime cookingStartedAt;
 
-    private LocalDate receivedAt;
+    private LocalDateTime deliveryStartedAt;
+
+    private LocalDateTime receivedAt;
 
 }
