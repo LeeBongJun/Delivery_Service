@@ -23,16 +23,16 @@ public class UserOrderService {
         Long id,
         Long userId
     ){
-        return userOrderRepository.findByAllByIdAndStatusAndUserId(id , UserOrderStatus.REGISTERD , userId)
+        return userOrderRepository.findAllByIdAndStatusAndUserId(id , UserOrderStatus.REGISTERD , userId)
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
 
     public List<UserOrderEntity> getUserOrderList(Long userId) {
-        return userOrderRepository.findAllByUserIdAndStatusByIdDesc(userId, UserOrderStatus.REGISTERD);
+        return userOrderRepository.findAllByUserIdAndStatusOrderByIdDesc(userId, UserOrderStatus.REGISTERD);
     }
 
     public List<UserOrderEntity> getUserOrderList(Long userId , List<UserOrderStatus> statusList) {
-        return userOrderRepository.findAllByUserIdAndStatusInByIdDesc(userId, statusList);
+        return userOrderRepository.findAllByUserIdAndStatusInOrderByIdDesc(userId, statusList);
     }
 
     // 현재 진행준인 내역
