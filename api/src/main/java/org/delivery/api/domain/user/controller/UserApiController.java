@@ -18,8 +18,6 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api/user")
 public class UserApiController {
-
-
     private final UserBusiness userBusiness;
 
     @GetMapping("/me")
