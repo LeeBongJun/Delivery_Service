@@ -4,12 +4,9 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
-group = 'org.delivery'
-version = '1.0-SNAPSHOT'
-
-java {
-    sourceCompatibility = '17'
-}
+group 'org.delivery'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '11'
 
 configurations {
     compileOnly {
@@ -22,18 +19,28 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
-    implementation 'org.springdoc:springdoc-openapi-starter-common:2.0.2'
-
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation project(':db')
+
+    // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // swagger
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
 }
 
 test {
