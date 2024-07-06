@@ -26,7 +26,7 @@ public class StoreUserService {
         return storeUserRepository.save(storeUserEntity);
     }
 
-    public Optional<StoreUserEntity> getUser(String email) {
+    public Optional<StoreUserEntity> getRegisterUser(String email) {
         return storeUserRepository.findFirstByEmailAndStatusOrderByIdDesc(email , StoreUserStatus.REGISTERED);
     }
 }
