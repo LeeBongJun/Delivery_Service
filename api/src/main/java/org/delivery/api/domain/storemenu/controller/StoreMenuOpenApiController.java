@@ -1,6 +1,6 @@
 package org.delivery.api.domain.storemenu.controller;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.api.Api;
 import org.delivery.api.domain.storemenu.business.StoreMenuBusiness;

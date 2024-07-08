@@ -1,7 +1,7 @@
 package org.delivery.api.domain.userorder.controller;
 
 import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.annotation.UserSession;
 import org.delivery.api.common.api.Api;
