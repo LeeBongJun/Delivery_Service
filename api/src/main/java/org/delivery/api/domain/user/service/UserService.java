@@ -26,7 +26,7 @@ public class UserService {
     public UserEntity register(UserEntity userEntity){
         return Optional.ofNullable(userEntity)
             .map(it ->{
-                userEntity.setStatus(UserStatus.REGISTER);
+                userEntity.setStatus(UserStatus.REGISTERED);
                 userEntity.setRegisteredAt(LocalDateTime.now());
                 return userRepository.save(userEntity);
             })
@@ -48,7 +48,7 @@ public class UserService {
         return userRepository.findFirstByEmailAndPasswordAndStatusOrderByIdDesc(
             email,
             password,
-            UserStatus.REGISTER
+            UserStatus.REGISTERED
         ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 
@@ -57,7 +57,7 @@ public class UserService {
     ){
         return userRepository.findFirstByIdAndStatusOrderByIdDesc(
             userId,
-            UserStatus.REGISTER
+            UserStatus.REGISTERED
         ).orElseThrow(()-> new ApiException(UserErrorCode.USER_NOT_FOUND));
     }
 }
