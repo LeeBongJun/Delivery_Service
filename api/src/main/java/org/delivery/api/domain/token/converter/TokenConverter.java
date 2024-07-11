@@ -13,19 +13,18 @@ import java.util.Objects;
 @Converter
 public class TokenConverter {
 
-    public TokenResponse tokenResponse(
+    public TokenResponse toResponse(
         TokenDto accessToken,
         TokenDto refreshToken
     ){
-        Objects.requireNonNull(accessToken , ()->{throw new ApiException(ErrorCode.NULL_POINT);});
-        Objects.requireNonNull(refreshToken , ()->{throw new ApiException(ErrorCode.NULL_POINT);});
+        Objects.requireNonNull(accessToken, ()->{throw new ApiException(ErrorCode.NULL_POINT);});
+        Objects.requireNonNull(refreshToken, ()->{throw new ApiException(ErrorCode.NULL_POINT);});
 
         return TokenResponse.builder()
-                .accessToken(accessToken.getToken())
-                .accessTokenExpiresAt(accessToken.getExpiresAt())
-                .refreshToken(refreshToken.getToken())
-                .refreshTokenExpiresAt(refreshToken.getExpiresAt())
-                .build();
+            .accessToken(accessToken.getToken())
+            .accessTokenExpiredAt(accessToken.getExpiredAt())
+            .refreshToken(refreshToken.getToken())
+            .refreshTokenExpiredAt(refreshToken.getExpiredAt())
+            .build();
     }
-
 }

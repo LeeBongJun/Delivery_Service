@@ -19,7 +19,7 @@ public class Api<T> {
 
     public static <T> Api<T> OK(T data){
         var api = new Api<T>();
-        api.result = Result.Ok();
+        api.result = Result.OK();
         api.body = data;
         return api;
     }

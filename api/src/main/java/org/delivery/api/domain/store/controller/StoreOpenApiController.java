@@ -1,15 +1,16 @@
-package org.delivery.api.domain.store.controler;
+package org.delivery.api.domain.store.controller;
 
-import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.api.Api;
 import org.delivery.api.domain.store.business.StoreBusiness;
-import org.delivery.api.domain.store.controler.model.StoreRegisterRequest;
-import org.delivery.api.domain.store.controler.model.StoreResponse;
+import org.delivery.api.domain.store.controller.model.StoreRegisterRequest;
+import org.delivery.api.domain.store.controller.model.StoreResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,11 +21,10 @@ public class StoreOpenApiController {
 
     @PostMapping("/register")
     public Api<StoreResponse> register(
-            @Valid
-            @RequestBody Api<StoreRegisterRequest> request
-    ) {
+        @Valid
+        @RequestBody Api<StoreRegisterRequest> request
+    ){
         var response = storeBusiness.register(request.getBody());
         return Api.OK(response);
     }
-
 }

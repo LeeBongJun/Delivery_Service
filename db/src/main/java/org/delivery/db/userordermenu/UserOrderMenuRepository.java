@@ -5,10 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserOrderMenuRepository extends JpaRepository<UserOrderMenuEntity , Long> {
+public interface UserOrderMenuRepository extends JpaRepository<UserOrderMenuEntity, Long> {
 
-    // select * form user_order_menu where user_order_id = ? status = ?
-    List<UserOrderMenuEntity> findAllByUserOrderIdAndStatus(Long userOrderId , UserOrderMenuStatus status);
-
-
+    // select * from user_order_menu where user_order_id = ? status = ?
+    List<UserOrderMenuEntity> findAllByUserOrderIdAndStatus(Long userOrderId, UserOrderMenuStatus status);
 }

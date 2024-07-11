@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface StoreRepository extends JpaRepository<StoreEntity , Long> {
+public interface StoreRepository extends JpaRepository<StoreEntity, Long> {
+
 
     // id + status
     // select * from store where id = ? and status = ? order by id desc limit 1
@@ -22,7 +23,5 @@ public interface StoreRepository extends JpaRepository<StoreEntity , Long> {
     List<StoreEntity> findAllByStatusAndCategoryOrderByStarDesc(StoreStatus status, StoreCategory storeCategory);
 
     // select * from store where name = ? and status = ? order by id desc limit 1
-    Optional<StoreEntity> findFirstByNameAndStatusOrderByIdDesc(String name,StoreStatus status);
-
+    Optional<StoreEntity> findFirstByNameAndStatusOrderByIdDesc(String name, StoreStatus status);
 }
-

@@ -25,7 +25,7 @@ public class AuthorizationService implements UserDetailsService {
         var storeUserEntity  = storeUserService.getRegisterUser(username);
         var storeEntity = storeRepository.findFirstByIdAndStatusOrderByIdDesc(
                 storeUserEntity.get().getStoreId() ,
-                StoreStatus.REGISTERD
+                StoreStatus.REGISTERED
         );
 
         return storeUserEntity.map(it -> {

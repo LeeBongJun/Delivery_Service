@@ -1,13 +1,14 @@
 package org.delivery.api.domain.user.controller.model;
 
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserLoginRequest {
 
     @NotBlank
@@ -15,6 +16,4 @@ public class UserLoginRequest {
 
     @NotBlank
     private String password;
-
-
 }

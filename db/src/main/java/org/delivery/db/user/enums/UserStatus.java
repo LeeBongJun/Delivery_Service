@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 public enum UserStatus {
 
     REGISTER("등록"),
-
-    UNREGISTER("해지"),
+    UNREGISTERED("해지"),
     ;
 
     private final String description;
-
 }

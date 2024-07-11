@@ -5,8 +5,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum StoreStatus {
 
-    REGISTERD("등록"),
-    UNREGISTERD("해지");
+    REGISTERED("등록"),
+    UNREGISTERED("해지"),
+    ;
 
     private String description;
 }

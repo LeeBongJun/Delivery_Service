@@ -1,6 +1,5 @@
 package org.delivery.api.config.rabbitmq;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -17,32 +16,35 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMqConfig {
 
     @Bean
-    public DirectExchange directExchange() {
+    public DirectExchange directExchange(){
         return new DirectExchange("delivery.exchange");
     }
 
     @Bean
-    public Queue queue() {
+    public Queue queue(){
         return new Queue("delivery.queue");
     }
 
-    public Binding binding(DirectExchange directExchange, Queue queue) {
-        return BindingBuilder.bind(queue).to(directExchange).with("delivery.queue");
+    @Bean
+    public Binding binding(DirectExchange directExchange, Queue queue){
+        return BindingBuilder.bind(queue).to(directExchange).with("delivery.key");
     }
 
-    // end que
 
+    /// end queue 설정
+
+    @Bean
     public RabbitTemplate rabbitTemplate(
-            ConnectionFactory connectionFactory,
-            MessageConverter messageConverter
-    ) {
+        ConnectionFactory connectionFactory,
+        MessageConverter messageConverter
+    ){
         var rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
         return rabbitTemplate;
     }
 
     @Bean
-    public MessageConverter messageConverter(ObjectMapper objectMapper) {
+    public MessageConverter messageConverter(ObjectMapper objectMapper){
         return new Jackson2JsonMessageConverter(objectMapper);
     }
 }

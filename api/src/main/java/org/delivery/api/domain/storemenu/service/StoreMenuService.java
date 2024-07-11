@@ -17,25 +17,26 @@ public class StoreMenuService {
 
     private final StoreMenuRepository storeMenuRepository;
 
-    public StoreMenuEntity getStoreMenuWithThrow(Long id) {
-        var entity = storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id , StoreMenuStatus.REGISTERD);
-        return entity.orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    public StoreMenuEntity getStoreMenuWithThrow(Long id){
+        var entity = storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreMenuStatus.REGISTERED);
+        return entity.orElseThrow(()->new ApiException(ErrorCode.NULL_POINT));
     }
 
-    public List<StoreMenuEntity> getStoreMenuByStoreId(Long storeId) {
-        return storeMenuRepository.findAllByStoreIdAndStatusOrderBySequenceDesc(storeId , StoreMenuStatus.REGISTERD);
+    public List<StoreMenuEntity> getStoreMenuByStoreId(Long storeId){
+        return storeMenuRepository.findAllByStoreIdAndStatusOrderBySequenceDesc(storeId, StoreMenuStatus.REGISTERED);
     }
-
 
 
     public StoreMenuEntity register(
-            StoreMenuEntity storeMenuEntity
-    ) {
+        StoreMenuEntity storeMenuEntity
+    ){
         return Optional.ofNullable(storeMenuEntity)
-                .map(it -> {
-                    it.setStatus(StoreMenuStatus.REGISTERD);
-                    return storeMenuRepository.save(it);
-                })
-                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+            .map(it ->{
+                it.setStatus(StoreMenuStatus.REGISTERED);
+                return storeMenuRepository.save(it);
+            })
+            .orElseThrow(()-> new ApiException(ErrorCode.NULL_POINT));
+
     }
+
 }

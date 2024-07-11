@@ -1,6 +1,6 @@
 package org.delivery.db.userordermenu;
 
-import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,9 +9,11 @@ import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
 import org.delivery.db.userordermenu.enums.UserOrderMenuStatus;
 
+import javax.persistence.*;
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 @Entity
@@ -19,13 +21,11 @@ import org.delivery.db.userordermenu.enums.UserOrderMenuStatus;
 public class UserOrderMenuEntity extends BaseEntity {
 
     @Column(nullable = false)
-    private Long userOrderId;
-
+    private Long userOrderId;   // 1 : n
     @Column(nullable = false)
-    private Long storeMenuId;
+    private Long storeMenuId;   // 1 : n
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 50 , nullable = false)
+    @Column(length = 50, nullable = false)
     private UserOrderMenuStatus status;
-
 }

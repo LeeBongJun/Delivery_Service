@@ -1,11 +1,11 @@
 package org.delivery.db.user;
 
-import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
 import org.delivery.db.user.enums.UserStatus;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
