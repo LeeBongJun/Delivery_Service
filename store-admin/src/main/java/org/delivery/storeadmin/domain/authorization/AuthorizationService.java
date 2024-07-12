@@ -16,36 +16,34 @@ import org.springframework.stereotype.Service;
 public class AuthorizationService implements UserDetailsService {
 
     private final StoreUserService storeUserService;
-
     private final StoreRepository storeRepository;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        var storeUserEntity  = storeUserService.getRegisterUser(username);
+        var storeUserEntity = storeUserService.getRegisterUser(username);
+
         var storeEntity = storeRepository.findFirstByIdAndStatusOrderByIdDesc(
-                storeUserEntity.get().getStoreId() ,
-                StoreStatus.REGISTERED
+            storeUserEntity.get().getStoreId(),
+            StoreStatus.REGISTERED
         );
 
-        return storeUserEntity.map(it -> {
+        return storeUserEntity.map(it ->{
 
-                    var userSession = UserSession.builder()
-                            .userId(it.getId())
-                            .email(it.getEmail())
-                            .password(it.getPassword())
-                            .status(it.getStatus())
-                            .role(it.getRole())
-                            .storeId(it.getStoreId())
-                            .registeredAt(it.getRegisteredAt())
-                            .lastLoginAt(it.getLastLoginAt())
-                            .unregisteredAt(it.getUnregisteredAt())
+            var userSession = UserSession.builder()
+                .userId(it.getId())
+                .email(it.getEmail())
+                .password(it.getPassword())
+                .status(it.getStatus())
+                .role(it.getRole())
+                .registeredAt(it.getRegisteredAt())
+                .lastLoginAt(it.getLastLoginAt())
+                .unregisteredAt(it.getUnregisteredAt())
 
-                            .storeId(storeEntity.get().getId())
-                            .storeName(storeEntity.get().getName())
-                            .build();
+                .storeId(storeEntity.get().getId())
+                .storeName(storeEntity.get().getName())
+                .build();
 
-                    return userSession;
+            return userSession;
         })
         .orElseThrow(() -> new UsernameNotFoundException(username));
     }

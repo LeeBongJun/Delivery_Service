@@ -1,6 +1,7 @@
 package org.delivery.storeadmin.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.Store;
 import org.delivery.db.store_user.StoreUserEntity;
 import org.delivery.db.store_user.StoreUserRepository;
 import org.delivery.db.store_user.enums.StoreUserStatus;
@@ -10,15 +11,15 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class StoreUserService {
 
     private final StoreUserRepository storeUserRepository;
     private final PasswordEncoder passwordEncoder;
 
     public StoreUserEntity register(
-            StoreUserEntity storeUserEntity
+        StoreUserEntity storeUserEntity
     ){
         storeUserEntity.setStatus(StoreUserStatus.REGISTERED);
         storeUserEntity.setPassword(passwordEncoder.encode(storeUserEntity.getPassword()));
@@ -26,7 +27,7 @@ public class StoreUserService {
         return storeUserRepository.save(storeUserEntity);
     }
 
-    public Optional<StoreUserEntity> getRegisterUser(String email) {
-        return storeUserRepository.findFirstByEmailAndStatusOrderByIdDesc(email , StoreUserStatus.REGISTERED);
+    public Optional<StoreUserEntity> getRegisterUser(String email){
+        return storeUserRepository.findFirstByEmailAndStatusOrderByIdDesc(email, StoreUserStatus.REGISTERED);
     }
 }

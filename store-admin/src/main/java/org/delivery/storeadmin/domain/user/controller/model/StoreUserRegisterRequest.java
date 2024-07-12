@@ -1,10 +1,11 @@
 package org.delivery.storeadmin.domain.user.controller.model;
 
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.delivery.db.store_user.enums.StoreUserRole;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +23,4 @@ public class StoreUserRegisterRequest {
 
     @NotBlank
     private StoreUserRole role;
-
 }

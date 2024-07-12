@@ -42,7 +42,6 @@ public class UserSession implements UserDetails {
 
     // store
     private Long storeId;
-
     private String storeName;
 
 

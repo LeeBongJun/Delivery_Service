@@ -1,8 +1,5 @@
 package org.delivery.storeadmin.domain.user.controller.model;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +7,9 @@ import lombok.NoArgsConstructor;
 import org.delivery.db.store_user.enums.StoreUserRole;
 import org.delivery.db.store_user.enums.StoreUserStatus;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,9 +25,8 @@ public class StoreUserResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
-    public static class UserResponse {
+    public static class UserResponse{
         private Long id;
-
         private String email;
 
         private StoreUserStatus status;
@@ -39,20 +38,14 @@ public class StoreUserResponse {
         private LocalDateTime unregisteredAt;
 
         private LocalDateTime lastLoginAt;
-
     }
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
-    public static class StoreResponse {
-
+    public static class StoreResponse{
         private Long id;
-
         private String name;
     }
-
-
-
 }

@@ -1,4 +1,4 @@
-package org.delivery.db.storeuser;
+package org.delivery.db.store_user;
 
 
 import lombok.AllArgsConstructor;
@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
-import org.delivery.db.storeuser.enums.StoreUserRole;
-import org.delivery.db.storeuser.enums.StoreUserStatus;
+import org.delivery.db.store_user.enums.StoreUserRole;
+import org.delivery.db.store_user.enums.StoreUserStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

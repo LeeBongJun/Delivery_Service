@@ -1,6 +1,6 @@
-package org.delivery.db.storeuser;
+package org.delivery.db.store_user;
 
-import org.delivery.db.storeuser.enums.StoreUserStatus;
+import org.delivery.db.store_user.enums.StoreUserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
