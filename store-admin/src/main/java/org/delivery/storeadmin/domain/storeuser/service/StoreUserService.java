@@ -1,7 +1,6 @@
-package org.delivery.storeadmin.domain.user.service;
+package org.delivery.storeadmin.domain.storeuser.service;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.Store;
 import org.delivery.db.store_user.StoreUserEntity;
 import org.delivery.db.store_user.StoreUserRepository;
 import org.delivery.db.store_user.enums.StoreUserStatus;

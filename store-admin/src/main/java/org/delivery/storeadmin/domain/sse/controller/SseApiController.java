@@ -29,35 +29,34 @@ public class SseApiController {
     private final SseConnectionPool sseConnectionPool;
     private final ObjectMapper objectMapper;
 
-    @GetMapping(path = "/connect" , produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(path = "/connect", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseBodyEmitter connect(
-            @Parameter(hidden = true)
-            @AuthenticationPrincipal UserSession userSession
-    ) {
-        log.info("login user {}" , userSession);
+        @Parameter(hidden = true)
+        @AuthenticationPrincipal UserSession userSession
+    ){
+        log.info("login user {}", userSession);
 
         var userSseConnection = UserSseConnection.connect(
-                userSession.getStoreId().toString(),
-                sseConnectionPool,
-                objectMapper
+            userSession.getStoreId().toString(),
+            sseConnectionPool,
+            objectMapper
         );
 
-        // session 에 추가
-        sseConnectionPool.addSession(userSseConnection.getUniqueKey() , userSseConnection);
+        sseConnectionPool.addSession(userSseConnection.getUniqueKey(), userSseConnection);
 
         return userSseConnection.getSseEmitter();
     }
 
     @GetMapping("/push-event")
     public void pushEvent(
-            @Parameter(hidden = true)
-            @AuthenticationPrincipal UserSession userSession
-    ) {
+        @Parameter(hidden = true)
+        @AuthenticationPrincipal UserSession userSession
+    ){
         var userSseConnection = sseConnectionPool.getSession(userSession.getStoreId().toString());
 
         Optional.ofNullable(userSseConnection)
-                .ifPresent(it -> {
-                    it.sendMessage("hello world");
-                });
+            .ifPresent(it ->{
+                it.sendMessage("hello world");
+            });
     }
 }

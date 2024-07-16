@@ -14,8 +14,8 @@ public class UserOrderMenuService {
 
     private final UserOrderMenuRepository userOrderMenuRepository;
 
-    public List<UserOrderMenuEntity> getUserOrderMenuList(Long userOrderId) {
-        return userOrderMenuRepository.findAllByUserOrderIdAndStatus(userOrderId , UserOrderMenuStatus.REGISTERED);
+    public List<UserOrderMenuEntity> getUserOrderMenuList(Long userOrderId){
+        return userOrderMenuRepository.findAllByUserOrderIdAndStatus(userOrderId, UserOrderMenuStatus.REGISTERED);
     }
 
 }

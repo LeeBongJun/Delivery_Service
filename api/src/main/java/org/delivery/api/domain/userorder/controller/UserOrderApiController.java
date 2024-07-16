@@ -25,16 +25,16 @@ public class UserOrderApiController {
     // 사용자 주문
     @PostMapping("")
     public Api<UserOrderResponse> userOrder(
-        @Valid
-        @RequestBody Api<UserOrderRequest> userOrderRequest,
+            @Valid
+            @RequestBody Api<UserOrderRequest> userOrderRequest,
 
-        @Parameter(hidden = true)
-        @UserSession
-        User user
+            @Parameter(hidden = true)
+            @UserSession
+            User user
     ){
         var response = userOrderBusiness.userOrder(
-            user,
-            userOrderRequest.getBody()
+                user,
+                userOrderRequest.getBody()
         );
         return Api.OK(response);
     }

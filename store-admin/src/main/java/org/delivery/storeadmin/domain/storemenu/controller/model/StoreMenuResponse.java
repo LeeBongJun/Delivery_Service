@@ -30,5 +30,4 @@ public class StoreMenuResponse {
     private int likeCount;
 
     private int sequence;
-
 }
